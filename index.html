@@ -674,4 +674,163 @@
       <a class="aimlock-button" href="https://vrsgfxweb.github.io/Tik-tak-enakkkk/" target="_blank">TicTackToe game</a>
         
       <p class="footer-code">Traser website</p>
+      <div class="bergerak">
+        <p>Copyright © 2025 Traser</p>
+      </div>
+    </div>
+
+    <!-- Halaman YouTube Downloader nya -->
+    <div id="youtube-page-kece" class="hidden">
+      <img src="https://files.catbox.moe/ro9u9z.jpg" alt="TRASER" class="logo">
+      <h2 class="highlight">TRASER YOUTUBE DOWNLOADER</h2>
+      <p class="yellow-text blink">Download YouTube Video by SaveFrom</p>
+
+      <input type="text" id="youtube-url-kece" placeholder="Paste URL YouTube di sini">
+      <br><br>
+      <button class="button" onclick="goToSaveFromKece()">DOWNLOAD</button><br>
+      <a class="link-button" href="#" onclick="goBackKece()">KEMBALI KE MENU UTAMA</a>
+    </div>
+  </div>
+
+  <!-- Audio Elements -->
+  <audio id="notif-sound">
+    <source src="https://cdn.pixabay.com/audio/2022/03/15/audio_f3a08ccddf.mp3" type="audio/mpeg">
+  </audio>
+
+  <audio id="sound">
+    <source src="https://cdn.prinsh.com/data-1/mp3/alan-walker_alone-remix.mp3" type="audio/mpeg">
+  </audio>
+
+  <script>
+    // togel nya
+    const themeToggle = document.getElementById('themeToggle');
+    let currentTheme = 'premium';
     
+    themeToggle.addEventListener('click', () => {
+      if (currentTheme === 'premium') {
+        // pencet tombil tampilan Kece seperti vrs
+        document.body.className = 'kece-theme';
+        document.getElementById('premium-content').classList.add('hidden');
+        document.getElementById('kece-content').classList.remove('hidden');
+        themeToggle.innerHTML = '<i class="fas fa-gem"></i><span>Switch to Premium</span>';
+        currentTheme = 'kece';
+        
+        // ini notificasi nya
+        const notifKece = document.getElementById('notification-kece');
+        notifKece.style.display = 'block';
+        notifKece.style.animation = 'slideIn 0.8s forwards, fadeOut 0.5s 2.5s forwards';
+        
+        setTimeout(() => {
+          notifKece.style.display = 'none';
+        }, 3000);
+      } else {
+        // tombol premium nya muah
+        document.body.className = 'premium-theme';
+        document.getElementById('kece-content').classList.add('hidden');
+        document.getElementById('premium-content').classList.remove('hidden');
+        themeToggle.innerHTML = '<i class="fas fa-moon"></i><span>Switch to Kece</span>';
+        currentTheme = 'premium';
+        
+        // Play notification for Premium theme
+        const notif = document.getElementById('notification');
+        notif.style.display = 'block';
+        notif.style.animation = 'slideIn 0.8s forwards, fadeOut 0.5s 3s forwards';
+        
+        setTimeout(() => {
+          notif.style.display = 'none';
+        }, 3500);
+      }
+      
+      // ini notification nya
+      document.getElementById('notif-sound').play();
+    });
+    
+    // ANIMASI DM FF 
+    function createDiamonds() {
+      const container = document.getElementById('diamonds');
+      const diamondCount = 15;
+      
+      for (let i = 0; i < diamondCount; i++) {
+        const diamond = document.createElement('div');
+        diamond.classList.add('diamond');
+        
+        // Random UKURANN
+        const size = Math.random() * 10 + 5;
+        diamond.style.width = `${size}px`;
+        diamond.style.height = `${size}px`;
+        
+        // Random position
+        diamond.style.left = `${Math.random() * 100}vw`;
+        
+        // Random animation duration between 5s and 15s
+        const duration = Math.random() * 10 + 5;
+        diamond.style.animation = `diamondFall ${duration}s linear infinite`;
+        
+        // BERHENTI
+        diamond.style.animationDelay = `${Math.random() * 5}s`;
+        
+        container.appendChild(diamond);
+      }
+    }
+
+    function playSound() {
+      document.getElementById("sound").play();
+    }
+
+    // Premium  Function nyaa
+    function showYTPage() {
+      document.getElementById("main-page").classList.add("hidden");
+      document.getElementById("youtube-page").classList.remove("hidden");
+    }
+
+    function goBack() {
+      document.getElementById("youtube-page").classList.add("hidden");
+      document.getElementById("main-page").classList.remove("hidden");
+    }
+
+    function goToSaveFrom() {
+      const url = document.getElementById("youtube-url").value;
+      if (url && (url.includes("youtube.com") || url.includes("youtu.be"))) {
+        const link = `https://id.savefrom.net/1-youtube-video-downloader.php?url=${encodeURIComponent(url)}`;
+        window.open(link, "_blank");
+      } else {
+        alert("Please enter a valid YouTube URL!");
+      }
+    }
+    
+    // Kece DONKK
+    function showYTPageKece() {
+      document.getElementById("main-page-kece").classList.add("hidden");
+      document.getElementById("youtube-page-kece").classList.remove("hidden");
+    }
+
+    function goBackKece() {
+      document.getElementById("youtube-page-kece").classList.add("hidden");
+      document.getElementById("main-page-kece").classList.remove("hidden");
+    }
+
+    function goToSaveFromKece() {
+      const url = document.getElementById("youtube-url-kece").value;
+      if (url && (url.includes("youtube.com") || url.includes("youtu.be"))) {
+        const link = `https://id.savefrom.net/1-youtube-video-downloader.php?url=${encodeURIComponent(url)}`;
+        window.open(link, "_blank");
+      } else {
+        alert("Masukkan URL YouTube yang valid!");
+      }
+    }
+
+    // DIAMOND FF
+    window.onload = () => {
+      createDiamonds();
+      
+      const notif = document.getElementById("notification");
+      const sound = document.getElementById("notif-sound");
+      sound.play();
+      
+      setTimeout(() => {
+        notif.style.display = "none";
+      }, 3500);
+    };
+  </script>
+</body>
+  </html>
