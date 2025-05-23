@@ -1,11 +1,11 @@
-<!DOCTYPE html>
+ <!DOCTYPE html>
 <html lang="en">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>TRASER | Premium Digital Club</title>
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;500;700&family=Montserrat:wght@300;400;600&family=Orbitron:wght@500;700&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;500;700&family=Montserrat:wght@300;400;600&family=Orbitron:wght@500;700&family=JetBrains+Mono:wght@400;700&display=swap" rel="stylesheet">
   <style>
     /* Theme Toggle Button */
     .theme-toggle {
@@ -299,156 +299,352 @@
       margin-bottom: 0;
     }
     
-    /* KECE THEME */
+    /* KECE THEME - ENHANCED */
     .kece-theme {
+      --black: #0a0a0a;
+      --black-light: #121212;
+      --black-lighter: #1e1e1e;
+      --neon-blue: #00f3ff;
+      --neon-pink: #ff00aa;
+      --neon-purple: #b300ff;
+      --neon-green: #00ff88;
+      --white: #f0f0f0;
+      --transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+      
       margin: 0;
       padding: 0;
-      background: url('https://files.catbox.moe/197nmb.jpg') no-repeat center center fixed;
-      background-size: cover;
-      font-family: 'Orbitron', monospace;
-      color: #00ffff;
-      text-align: center;
+      background-color: var(--black);
+      color: var(--white);
+      font-family: 'JetBrains Mono', monospace;
+      overflow-x: hidden;
+      position: relative;
+      min-height: 100vh;
     }
     
-    .kece-theme .notification {
+    .kece-theme::before {
+      content: '';
       position: fixed;
-      top: 20px;
-      right: -400px;
-      background: rgba(0, 0, 0, 0.85);
-      color: #00ffea;
-      border: 2px solid #00ffff;
-      padding: 15px 25px;
-      border-radius: 15px;
-      font-size: 14px;
-      box-shadow: 0 0 15px #00ffff, 0 0 8px #ff00ff;
-      z-index: 9999;
-      animation: slideIn 0.8s forwards, fadeOut 0.5s 2.5s forwards;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: 
+        radial-gradient(circle at 20% 30%, rgba(0, 243, 255, 0.03) 0%, transparent 30%),
+        radial-gradient(circle at 80% 70%, rgba(255, 0, 170, 0.03) 0%, transparent 30%),
+        linear-gradient(to bottom, var(--black), var(--black-light));
+      z-index: -2;
+    }
+    
+    .kece-theme::after {
+      content: '';
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background-image: 
+        linear-gradient(90deg, rgba(0, 243, 255, 0.02) 1px, transparent 1px),
+        linear-gradient(0deg, rgba(0, 243, 255, 0.02) 1px, transparent 1px);
+      background-size: 20px 20px;
+      z-index: -1;
+      pointer-events: none;
+    }
+    
+    .kece-theme .kece-container {
+      max-width: 800px;
+      margin: 0 auto;
+      padding: 40px 20px;
+      position: relative;
+    }
+    
+    .kece-theme .kece-card {
+      background: rgba(18, 18, 18, 0.8);
+      backdrop-filter: blur(12px);
+      -webkit-backdrop-filter: blur(12px);
+      border-radius: 16px;
+      border: 1px solid rgba(0, 243, 255, 0.1);
+      box-shadow: 
+        0 8px 32px rgba(0, 0, 0, 0.3),
+        0 0 0 1px rgba(0, 243, 255, 0.05),
+        inset 0 0 20px rgba(0, 243, 255, 0.02);
+      padding: 40px 30px;
+      margin: 30px 0;
+      position: relative;
+      overflow: hidden;
+      transition: var(--transition);
+    }
+    
+    .kece-theme .kece-card:hover {
+      transform: translateY(-5px);
+      box-shadow: 
+        0 12px 40px rgba(0, 0, 0, 0.4),
+        0 0 0 1px rgba(0, 243, 255, 0.1),
+        inset 0 0 30px rgba(0, 243, 255, 0.05);
+    }
+    
+    .kece-theme .kece-card::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 3px;
+      background: linear-gradient(90deg, var(--neon-blue), var(--neon-pink), var(--neon-purple));
+      opacity: 0.7;
+    }
+    
+    .kece-theme .kece-card::after {
+      content: '';
+      position: absolute;
+      bottom: 0;
+      right: 0;
+      width: 100px;
+      height: 100px;
+      background: radial-gradient(circle, rgba(0, 243, 255, 0.1) 0%, transparent 70%);
+      z-index: -1;
     }
     
     .kece-theme h1, 
     .kece-theme h2, 
-    .kece-theme p {
-      text-shadow: 0 0 6px #00ffff, 0 0 10px #ff00ff;
+    .kece-theme h3 {
+      font-family: 'Orbitron', sans-serif;
+      text-align: center;
+      margin: 0 0 20px;
+      position: relative;
     }
     
     .kece-theme h1 {
-      margin-top: 16px;
-      font-size: 22px;
-      color: #00ffff;
+      font-size: 2.5rem;
+      color: var(--white);
+      text-shadow: 
+        0 0 10px rgba(0, 243, 255, 0.5),
+        0 0 20px rgba(0, 243, 255, 0.3);
+      letter-spacing: 2px;
+      animation: textGlow 3s ease-in-out infinite alternate;
     }
     
-    .kece-theme h2.highlight {
-      font-size: 14px;
-      color: #ff0080;
-      margin-top: 6px;
-      text-transform: uppercase;
+    .kece-theme h2 {
+      font-size: 1.8rem;
+      color: var(--neon-blue);
+      text-shadow: 
+        0 0 8px rgba(0, 243, 255, 0.5),
+        0 0 16px rgba(0, 243, 255, 0.2);
     }
     
-    .kece-theme .logo {
-      width: 100px;
+    .kece-theme p {
+      font-size: 1rem;
+      line-height: 1.6;
+      color: rgba(240, 240, 240, 0.8);
+      margin-bottom: 25px;
+      text-align: center;
+    }
+    
+    .kece-theme .kece-logo {
+      width: 120px;
+      height: 120px;
       border-radius: 50%;
-      margin: 12px auto;
-      border: 1.5px solid #00ffff;
-      box-shadow: 0 0 8px #00ffff, 0 0 4px #ff00ff;
+      margin: 0 auto 25px;
+      border: 2px solid var(--neon-blue);
+      padding: 5px;
+      box-shadow: 
+        0 0 20px rgba(0, 243, 255, 0.3),
+        0 0 40px rgba(0, 243, 255, 0.1);
+      transition: var(--transition);
+      position: relative;
+      overflow: hidden;
     }
     
-    .kece-theme .yellow-text {
-      color: #ffff00;
-      font-size: 9px;
-      margin: 4px;
+    .kece-theme .kece-logo:hover {
+      transform: scale(1.05) rotate(5deg);
+      box-shadow: 
+        0 0 30px rgba(0, 243, 255, 0.4),
+        0 0 50px rgba(0, 243, 255, 0.2);
     }
     
-    .kece-theme .green-text {
-      color: #66ff66;
-      font-size: 9px;
-      margin-top: 10px;
+    .kece-theme .kece-logo::before {
+      content: '';
+      position: absolute;
+      top: -50%;
+      left: -50%;
+      width: 200%;
+      height: 200%;
+      background: linear-gradient(
+        to bottom right,
+        transparent,
+        transparent,
+        transparent,
+        rgba(0, 243, 255, 0.1),
+        transparent,
+        transparent,
+        transparent
+      );
+      transform: rotate(30deg);
+      animation: shine 3s infinite;
     }
     
-    .kece-theme .button,
-    .kece-theme .link-button {
+    .kece-theme .kece-btn {
       display: inline-block;
-      background: rgba(0, 0, 0, 0.6);
-      border: 1px solid #00ffff;
-      color: #00ffff;
-      padding: 5px 10px;
-      font-size: 10px;
-      margin: 3px auto;
+      background: linear-gradient(135deg, var(--neon-blue), var(--neon-purple));
+      color: var(--black);
+      padding: 12px 25px;
+      font-size: 0.9rem;
+      margin: 12px 8px;
       cursor: pointer;
-      border-radius: 8px;
+      border-radius: 50px;
       text-decoration: none;
       font-weight: 600;
-      transition: all 0.3s ease;
-      box-shadow: 0 0 3px #00ffff, 0 0 6px #ff00ff;
-    }
-    
-    .kece-theme .button:hover,
-    .kece-theme .link-button:hover {
-      transform: scale(1.05);
-      background: #00000099;
-      box-shadow: 0 0 6px #00ffff, 0 0 10px #ff00ff;
-    }
-    
-    .kece-theme .pink-button {
-      background: linear-gradient(135deg, #ff00aa, #ff1493);
-      color: white;
-      border: 1px solid #ffffff;
-      box-shadow: 0 0 4px #ff66cc, 0 0 6px #ff1493;
-    }
-    
-    .kece-theme .pink-button:hover {
-      transform: scale(1.05);
-      box-shadow: 0 0 8px #ff99cc, 0 0 10px #ff33aa;
-    }
-    
-    .kece-theme .footer-code {
-      margin-top: 16px;
-      font-size: 9px;
-      color: #ccc;
-    }
-    
-    .kece-theme .blink {
-      animation: blink 1s infinite;
-    }
-    
-    .kece-theme .glitch {
-      color: #ff0000;
-      font-size: 10px;
-      font-weight: bold;
-      position: relative;
-      animation: glitch 1s infinite;
-    }
-    
-    .kece-theme input[type="text"] {
-      padding: 4px;
-      width: 70%;
-      max-width: 200px;
-      border-radius: 6px;
+      transition: var(--transition);
+      box-shadow: 
+        0 4px 15px rgba(0, 243, 255, 0.3),
+        0 0 10px rgba(179, 0, 255, 0.2);
       border: none;
-      background: #000;
-      color: #0ff;
+      position: relative;
+      overflow: hidden;
       text-align: center;
-      box-shadow: 0 0 6px #00ffff;
-      font-family: 'Orbitron', monospace;
-      font-size: 10px;
+      min-width: 180px;
     }
     
-    .kece-theme .aimlock-button {
-      display: inline-block;
-      background: rgba(20,0,0,0.8);
-      border: 1px solid red;
-      color: #ff4444;
-      padding: 5px 10px;
-      font-size: 10px;
+    .kece-theme .kece-btn:hover {
+      transform: translateY(-3px);
+      box-shadow: 
+        0 6px 20px rgba(0, 243, 255, 0.4),
+        0 0 15px rgba(179, 0, 255, 0.3);
+    }
+    
+    .kece-theme .kece-btn::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: -100%;
+      width: 100%;
+      height: 100%;
+      background: linear-gradient(
+        90deg,
+        transparent,
+        rgba(255, 255, 255, 0.2),
+        transparent
+      );
+      transition: 0.5s;
+    }
+    
+    .kece-theme .kece-btn:hover::before {
+      left: 100%;
+    }
+    
+    .kece-theme .kece-btn-outline {
+      background: transparent;
+      border: 2px solid var(--neon-blue);
+      color: var(--neon-blue);
+      box-shadow: none;
+    }
+    
+    .kece-theme .kece-btn-outline:hover {
+      background: rgba(0, 243, 255, 0.1);
+      color: var(--neon-blue);
+      box-shadow: 0 0 20px rgba(0, 243, 255, 0.2);
+    }
+    
+    .kece-theme .kece-btn-pink {
+      background: linear-gradient(135deg, var(--neon-pink), #ff0066);
+      box-shadow: 
+        0 4px 15px rgba(255, 0, 170, 0.3),
+        0 0 10px rgba(255, 0, 102, 0.2);
+    }
+    
+    .kece-theme .kece-btn-pink:hover {
+      box-shadow: 
+        0 6px 20px rgba(255, 0, 170, 0.4),
+        0 0 15px rgba(255, 0, 102, 0.3);
+    }
+    
+    .kece-theme .kece-notification {
+      position: fixed;
+      top: 30px;
+      right: -400px;
+      background: rgba(18, 18, 18, 0.95);
+      color: var(--neon-blue);
+      border-left: 3px solid var(--neon-blue);
+      padding: 15px 25px;
       border-radius: 8px;
-      text-decoration: none;
-      box-shadow: 0 0 4px red, 0 0 8px darkred;
-      margin-top: 6px;
+      font-size: 0.9rem;
+      box-shadow: 
+        0 5px 30px rgba(0, 0, 0, 0.3),
+        0 0 10px rgba(0, 243, 255, 0.2);
+      z-index: 9999;
+      animation: slideIn 0.8s forwards, fadeOut 0.5s 3s forwards;
+      font-weight: 500;
+      max-width: 300px;
+      backdrop-filter: blur(10px);
+      -webkit-backdrop-filter: blur(10px);
     }
     
-    .kece-theme .aimlock-button:hover {
-      transform: scale(1.06);
-      background: rgba(50,0,0,0.9);
-      box-shadow: 0 0 8px red, 0 0 14px #aa0000;
+    .kece-theme .kece-marquee {
+      background: rgba(10, 10, 10, 0.7);
+      padding: 12px 0;
+      margin: 25px 0;
+      border-top: 1px solid rgba(0, 243, 255, 0.1);
+      border-bottom: 1px solid rgba(0, 243, 255, 0.1);
+      overflow: hidden;
+      border-radius: 0;
+    }
+    
+    .kece-theme .kece-marquee-content {
+      font-size: 0.9rem;
+      color: var(--neon-blue);
+      white-space: nowrap;
+      animation: marquee 20s linear infinite;
+      display: inline-block;
+      padding-left: 100%;
+      text-shadow: 0 0 5px rgba(0, 243, 255, 0.5);
+    }
+    
+    .kece-theme .kece-input {
+      padding: 12px 20px;
+      width: 70%;
+      max-width: 400px;
+      border-radius: 50px;
+      border: 1px solid rgba(0, 243, 255, 0.3);
+      background: rgba(10, 10, 10, 0.7);
+      color: var(--neon-blue);
+      font-size: 0.9rem;
+      margin: 20px auto;
+      display: block;
+      transition: var(--transition);
+      text-align: center;
+      font-family: 'JetBrains Mono', monospace;
+    }
+    
+    .kece-theme .kece-input:focus {
+      outline: none;
+      border-color: var(--neon-blue);
+      box-shadow: 
+        0 0 20px rgba(0, 243, 255, 0.3),
+        0 0 10px rgba(0, 243, 255, 0.1);
+    }
+    
+    .kece-theme .kece-footer {
+      text-align: center;
+      margin-top: 50px;
+      padding: 25px 0;
+      border-top: 1px solid rgba(0, 243, 255, 0.1);
+      position: relative;
+    }
+    
+    .kece-theme .kece-footer p {
+      font-size: 0.8rem;
+      color: rgba(240, 240, 240, 0.4);
+      margin-bottom: 0;
+    }
+    
+    .kece-theme .kece-dot {
+      position: absolute;
+      width: 6px;
+      height: 6px;
+      background: var(--neon-blue);
+      border-radius: 50%;
+      opacity: 0;
+      animation: dotFall linear infinite;
+      z-index: -1;
     }
     
     /* Animations */
@@ -485,33 +681,51 @@
       100% { top: 100vh; opacity: 0; }
     }
     
+    @keyframes dotFall {
+      0% { top: -10px; opacity: 0; }
+      10% { opacity: 0.6; }
+      90% { opacity: 0.6; }
+      100% { top: 100vh; opacity: 0; }
+    }
+    
+    @keyframes shine {
+      0% { transform: rotate(30deg) translate(-30%, -30%); }
+      100% { transform: rotate(30deg) translate(30%, 30%); }
+    }
+    
+    @keyframes textGlow {
+      0% { text-shadow: 0 0 10px rgba(0, 243, 255, 0.5), 0 0 20px rgba(0, 243, 255, 0.3); }
+      50% { text-shadow: 0 0 15px rgba(0, 243, 255, 0.7), 0 0 25px rgba(0, 243, 255, 0.4); }
+      100% { text-shadow: 0 0 10px rgba(0, 243, 255, 0.5), 0 0 20px rgba(0, 243, 255, 0.3); }
+    }
+    
     /* Responsive */
     @media (max-width: 768px) {
-      .premium-theme .luxury-container {
+      .kece-theme .kece-container {
         padding: 20px 15px;
       }
       
-      .premium-theme .luxury-card {
+      .kece-theme .kece-card {
         padding: 30px 20px;
       }
       
-      .premium-theme h1 {
+      .kece-theme h1 {
         font-size: 2rem;
       }
       
-      .premium-theme h2 {
+      .kece-theme h2 {
         font-size: 1.5rem;
       }
       
-      .premium-theme .luxury-btn {
+      .kece-theme .kece-btn {
         min-width: 160px;
-        padding: 12px 20px;
-        font-size: 0.9rem;
+        padding: 10px 15px;
+        font-size: 0.8rem;
       }
       
-      .premium-theme .luxury-input {
+      .kece-theme .kece-input {
         width: 85%;
-        padding: 12px 15px;
+        padding: 10px 15px;
       }
     }
   </style>
@@ -530,7 +744,7 @@
     <div class="diamond-pattern"></div>
     
     <!-- ANIMASI DIAMOND NYA DEK -->
-    <div id="diamond"></div>
+    <div id="diamonds"></div>
 
     <!-- Notifikasi nya dek  -->
     <div id="notification" class="luxury-notification">
@@ -643,53 +857,115 @@
     </div>
   </div>
   
-  <!-- KECE THEME CONTENT -->
+  <!-- KECE THEME CONTENT - ENHANCED -->
   <div id="kece-content" class="hidden">
     <!-- Notifikasi -->
-    <div id="notification-kece" class="notification">WELCOME TO TRASER APP 🚬😮‍💨</div>
+    <div id="notification-kece" class="kece-notification">
+      <i class="fas fa-bolt" style="margin-right: 8px;"></i>
+      WELCOME TO TRASER APP 🚬😮‍💨
+    </div>
 
     <!-- UTAMA NYA DEPELOPERR VRS-->
-    <div id="main-page-kece">
-      <h1>TraserSec Team</h1>
-      <p>Traser official marga x4</p>
-      <img src="https://files.catbox.moe/ro9u9z.jpg" alt="TRASER" class="logo">
-      <h2 class="highlight">TRASER OFC</h2>
-      <p class="yellow-text blink">Entertainment website</p>
-      <p><strong>TraserSec</strong> Website TRASER</p>
-
-      <marquee>
-        <span class="glitch">Thanks to Yan • Jall • Rapip • Vrs • Daviant • Apiss • Fall • Noxvy • BAPAK AGUS • Celxz</span>
-      </marquee>
-
-      <p class="green-text">Tiktok downloader, Spotify Web, Grup Traser</p>
-
-      <button class="button" onclick="playSound()">PLAY SOUND - ALONE REMIX</button><br>
-      <a class="link-button" href="https://vrsgfxweb.github.io/Tt-download-/" target="_blank">TRASER TIKTOK DOWNLOADER</a><br>
-      <a class="link-button" href="#" onclick="showYTPageKece()">TRASER YOUTUBE DOWNLOADER</a><br>
-      <a class="link-button" href="https://open.spotify.com/" target="_blank">SPOTIFY WEB LOGIN</a>
-      <a class="link-button pink-button" href="https://vrsgfxweb.github.io/anime-menu/" target="_blank">NONTON ANIME</a>
-      <a class="link-button" href="https://chat.whatsapp.com/GX9KIuzSQKN9PNOxq7uKcM" target="_blank">JOIN TRASER X4 V1 GROUP</a>
-      <a class="link-button pink-button" href="https://vrsgfxweb.github.io/Surat-cinta-by-vrs/" target="_blank">FITUR EKSLUSIF 🥰🗿</a>
-      <a class="aimlock-button" href="https://vrsgfxweb.github.io/Panel-vrs/" target="_blank">AIMLOCK BY VRS</a>
-      <a class="aimlock-button" href="https://vrsgfxweb.github.io/Tik-tak-enakkkk/" target="_blank">TicTackToe game</a>
+    <div id="main-page-kece" class="kece-container">
+      <div class="kece-card">
+        <div class="kece-logo">
+          <img src="" alt="">
+        </div>
         
-      <p class="footer-code">Traser website</p>
-      <div class="bergerak">
-        <p>Copyright © 2025 Traser</p>
+        <h1>TRASER SEC TEAM</h1>
+        <p>Traser official marga x4</p>
+        
+        <div class="kece-marquee">
+          <div class="kece-marquee-content">
+            <i class="fas fa-code" style="margin: 0 10px;"></i>
+            Thanks to Yan • Jall • Rapip • Vrs • Daviant • Apiss • Fall • Noxvy • BAPAK AGUS • Celxz
+            <i class="fas fa-code" style="margin: 0 10px;"></i>
+          </div>
+        </div>
+        
+        <div style="text-align: center; margin: 25px 0;">
+          <button class="kece-btn" onclick="playSound()">
+            <i class="fas fa-music" style="margin-right: 8px;"></i>
+            PLAY ALONE REMIX🎵
+          </button>
+        </div>
+        
+        <div style="display: flex; flex-wrap: wrap; justify-content: center;">
+          <a href="https://vrsgfxweb.github.io/Tt-download-/" target="_blank" class="kece-btn kece-btn-outline">
+            <i class="fas fa-download" style="margin-right: 8px;"></i>
+            TIKTOK DOWNLOADER
+          </a>
+          
+          <a href="#" onclick="showYTPageKece()" class="kece-btn kece-btn-outline">
+            <i class="fab fa-youtube" style="margin-right: 8px;"></i>
+            YOUTUBE DOWNLOADER
+          </a>
+          
+          <a href="https://open.spotify.com/" target="_blank" class="kece-btn kece-btn-outline">
+            <i class="fab fa-spotify" style="margin-right: 8px;"></i>
+            SPOTIFY WEB
+          </a>
+          
+          <a href="https://vrsgfxweb.github.io/anime-menu/" target="_blank" class="kece-btn kece-btn-pink">
+            <i class="fas fa-film" style="margin-right: 8px;"></i>
+            ANIME
+          </a>
+          
+          <a href="https://chat.whatsapp.com/GX9KIuzSQKN9PNOxq7uKcM" target="_blank" class="kece-btn kece-btn-outline">
+            <i class="fab fa-whatsapp" style="margin-right: 8px;"></i>
+            JOIN GROUP
+          </a>
+          
+          <a href="https://vrsgfxweb.github.io/Surat-cinta-by-vrs/" target="_blank" class="kece-btn kece-btn-pink">
+            <i class="fas fa-heart" style="margin-right: 8px;"></i>
+            FITUR SPESIAL
+          </a>
+          
+          <a href="https://vrsgfxweb.github.io/Panel-vrs/" target="_blank" class="kece-btn">
+            <i class="fas fa-crosshairs" style="margin-right: 8px;"></i>
+            AIMLOCK EP EP🗿
+          </a>
+          
+          <a href="https://vrsgfxweb.github.io/Tik-tak-enakkkk/" target="_blank" class="kece-btn kece-btn-outline">
+            <i class="fas fa-gamepad" style="margin-right: 8px;"></i>
+            TIC-TAC-TOE
+          </a>
+        </div>
+      </div>
+      
+      <div class="kece-footer">
+        <p>© 2025 TRASER OFC | KECE EDITION</p>
       </div>
     </div>
 
     <!-- Halaman YouTube Downloader nya -->
-    <div id="youtube-page-kece" class="hidden">
-      <img src="https://files.catbox.moe/ro9u9z.jpg" alt="TRASER" class="logo">
-      <h2 class="highlight">TRASER YOUTUBE DOWNLOADER</h2>
-      <p class="yellow-text blink">Download YouTube Video by SaveFrom</p>
-
-      <input type="text" id="youtube-url-kece" placeholder="Paste URL YouTube di sini">
-      <br><br>
-      <button class="button" onclick="goToSaveFromKece()">DOWNLOAD</button><br>
-      <a class="link-button" href="#" onclick="goBackKece()">KEMBALI KE MENU UTAMA</a>
+    <div id="youtube-page-kece" class="hidden kece-container">
+      <div class="kece-card">
+        <div class="kece-logo">
+          <img src="https://files.catbox.moe/ro9u9z.jpg" alt="TRASER">
+        </div>
+        
+        <h2>TRASER YOUTUBE DOWNLOADER</h2>
+        <p>High-quality video downloads for member ANJ</p>
+        
+        <input type="text" id="youtube-url-kece" class="kece-input" placeholder="Paste YouTube URL here...">
+        
+        <div style="text-align: center; margin-top: 25px;">
+          <button class="kece-btn" onclick="goToSaveFromKece()">
+            <i class="fas fa-download" style="margin-right: 8px;"></i>
+            DOWNLOAD NOW
+          </button>
+          
+          <button class="kece-btn kece-btn-outline" onclick="goBackKece()" style="margin-left: 10px;">
+            <i class="fas fa-arrow-left" style="margin-right: 8px;"></i>
+            KEMBALI KE MENU
+          </button>
+        </div>
+      </div>
     </div>
+    
+    <!-- ANIMASI DOT NYA -->
+    <div id="dots"></div>
   </div>
 
   <!-- Audio Elements -->
@@ -718,11 +994,14 @@
         // ini notificasi nya
         const notifKece = document.getElementById('notification-kece');
         notifKece.style.display = 'block';
-        notifKece.style.animation = 'slideIn 0.8s forwards, fadeOut 0.5s 2.5s forwards';
+        notifKece.style.animation = 'slideIn 0.8s forwards, fadeOut 0.5s 3s forwards';
         
         setTimeout(() => {
           notifKece.style.display = 'none';
-        }, 3000);
+        }, 3500);
+        
+        // Create dots animation for Kece theme
+        createDots();
       } else {
         // tombol premium nya muah
         document.body.className = 'premium-theme';
@@ -739,6 +1018,9 @@
         setTimeout(() => {
           notif.style.display = 'none';
         }, 3500);
+        
+        // Create diamonds animation for Premium theme
+        createDiamonds();
       }
       
       // ini notification nya
@@ -748,6 +1030,7 @@
     // ANIMASI DM FF 
     function createDiamonds() {
       const container = document.getElementById('diamonds');
+      container.innerHTML = '';
       const diamondCount = 15;
       
       for (let i = 0; i < diamondCount; i++) {
@@ -770,6 +1053,35 @@
         diamond.style.animationDelay = `${Math.random() * 5}s`;
         
         container.appendChild(diamond);
+      }
+    }
+    
+    // ANIMASI DOT KECE
+    function createDots() {
+      const container = document.getElementById('dots');
+      container.innerHTML = '';
+      const dotCount = 20;
+      
+      for (let i = 0; i < dotCount; i++) {
+        const dot = document.createElement('div');
+        dot.classList.add('kece-dot');
+        
+        // Random size
+        const size = Math.random() * 6 + 3;
+        dot.style.width = `${size}px`;
+        dot.style.height = `${size}px`;
+        
+        // Random position
+        dot.style.left = `${Math.random() * 100}vw`;
+        
+        // Random animation duration
+        const duration = Math.random() * 8 + 4;
+        dot.style.animation = `dotFall ${duration}s linear infinite`;
+        
+        // Random delay
+        dot.style.animationDelay = `${Math.random() * 5}s`;
+        
+        container.appendChild(dot);
       }
     }
 
@@ -833,4 +1145,4 @@
     };
   </script>
 </body>
-  </html>
+</html>
